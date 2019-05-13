@@ -18,6 +18,21 @@ public class MainPage extends BasePage {
     }
 
     public void openLoginWindow(){
+
         clickOnElement(By.xpath(Locators.logInButtonXPath));
+        driver.switchTo().frame(driver.findElement(By.cssSelector(Locators.loginFrameCssSelector)));
+
+    }
+
+    public void loginWithCredentials(String username, String password){
+        driver.findElement(By.id(Locators.loginFrameUsernameFieldId)).sendKeys(username);
+        driver.findElement(By.id(Locators.loginFramePasswordFieldId)).sendKeys(password);
+        driver.findElement(By.xpath(Locators.loginFrameSubmitButtonXPath)).click();
+    }
+
+    public String getErrorMessageFromLoginFrame(){
+        waitVisibilityOfElement(By.xpath(Locators.loginFrameErrorMessageXPath));
+        return driver.findElement(By.xpath(Locators.loginFrameErrorMessageXPath)).getText();
     }
 }
+

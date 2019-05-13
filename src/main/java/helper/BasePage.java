@@ -17,7 +17,7 @@ public class BasePage {
         this.driver = basePageLocalDriver;
     }
 
-    private void waitVisibilityOfElement(By elementBy) {
+    protected void waitVisibilityOfElement(By elementBy) {
         wait = new WebDriverWait(driver,15);
         try {
             wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(elementBy));

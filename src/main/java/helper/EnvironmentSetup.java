@@ -26,7 +26,14 @@ public class EnvironmentSetup {
 
         options = new ChromeOptions();
         options.addArguments("--headless");
+        options.addArguments("--disable-notifications");
         driver = new ChromeDriver(options);
+
+/*
+        options = new ChromeOptions();
+        options.addArguments("--disable-notifications");
+        driver = new ChromeDriver(options);
+*/
 
         action = new Actions(driver);
         js = (JavascriptExecutor) driver;
